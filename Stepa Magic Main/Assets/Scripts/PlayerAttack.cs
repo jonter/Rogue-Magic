@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] float delay = 0.1f;
+    [SerializeField] float delay = 0.3f;
     bool isReady = true;
     Animator anim;
     [SerializeField] MagicStuff stuff;
