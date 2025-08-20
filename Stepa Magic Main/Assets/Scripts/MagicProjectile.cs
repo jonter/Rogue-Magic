@@ -12,7 +12,15 @@ public class MagicProjectile : MonoBehaviour
         rb.velocity = velocity;
 
         Destroy(gameObject, 10);
+
     }
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        IDamagable obj = other.GetComponent<IDamagable>();
+        if (obj != null) obj.GetDamage(damage);
+        Destroy(gameObject);
+    }
+
+
 }
