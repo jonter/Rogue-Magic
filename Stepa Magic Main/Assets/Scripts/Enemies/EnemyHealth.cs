@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemyHealth : MonoBehaviour, IDamagable
 {
@@ -9,8 +10,12 @@ public class EnemyHealth : MonoBehaviour, IDamagable
     bool alive = true;
     Animator anim;
 
+    public event Action<float> OnDamage;
+    public event Action OnDeath;
+
     void Start()
     {
+        maxHp = hp;
         anim = GetComponent<Animator>();
     }
 
@@ -19,7 +24,8 @@ public class EnemyHealth : MonoBehaviour, IDamagable
         if (alive == false) return;
         hp -= damage;
         anim.SetTrigger("hit");
-        // отобразить жизни и урон
+        if(OnDamage != null) OnDamage(hp/maxHp);
+
         if (hp < 0.001f)
         {
             Death();
@@ -29,8 +35,10 @@ public class EnemyHealth : MonoBehaviour, IDamagable
     void Death()
     {
         print("Враг убит");
+        if (OnDeath != null) OnDeath();
         GetComponent<EnemyAI>().enabled = false;
-        Destroy(gameObject);
+        Destroy(gameObject, 10);
+        GetComponent<RagdollActivator>().Activate();
     }
 
   
