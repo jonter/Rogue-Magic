@@ -25,6 +25,7 @@ public class EnemyHealth : MonoBehaviour, IDamagable
         hp -= damage;
         anim.SetTrigger("hit");
         if(OnDamage != null) OnDamage(hp/maxHp);
+        DamageTextDisplay.Show(transform.position, damage);
 
         if (hp < 0.001f)
         {

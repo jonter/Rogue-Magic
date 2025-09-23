@@ -27,29 +27,22 @@ public class DamageText : MonoBehaviour
 
     IEnumerator PlayAnimCoroutine()
     {
-        Vector3 endPos = transform.position + transform.up * Random.Range(0.5f, 1.5f)
-            + transform.right * Random.Range(-1.5f, 1.5f);
+        Vector3 endPos = transform.position + transform.up * Random.Range(0.4f, 0.6f)
+            + transform.right * Random.Range(-0.5f, 0.5f);
         transform.DOMove(endPos, animTime);
         yield return new WaitForSeconds(animTime / 2);
         Color c = textcolor;
         c.a = 0;
         mytext.DOColor(c, animTime / 2);
         yield return new WaitForSeconds(animTime / 2);
+        DamageTextDisplay.Return(this);
+    }
+
+
+    private void OnDisable()
+    {
         transform.DOKill();
         mytext.DOKill();
-        // отключаем текст и возвращаем его обратно в Object Pool
     }
 
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            EnemyHealth enemy = FindFirstObjectByType<EnemyHealth>();
-            Vector3 pos = enemy.transform.position + new Vector3(0, 3, 0);
-            Show(pos, 15);
-        }
-    }
 }
