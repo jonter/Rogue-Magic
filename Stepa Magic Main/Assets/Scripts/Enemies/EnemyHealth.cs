@@ -40,6 +40,8 @@ public class EnemyHealth : MonoBehaviour, IDamagable
         GetComponent<EnemyAI>().enabled = false;
         Destroy(gameObject, 10);
         GetComponent<RagdollActivator>().Activate();
+        alive = false;
+        GetComponent<Collider>().enabled = false;
     }
 
   

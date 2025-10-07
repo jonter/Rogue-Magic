@@ -25,6 +25,12 @@ public class DamageText : MonoBehaviour
         StartCoroutine(PlayAnimCoroutine());
     }
 
+    public void Show(Vector3 pos, float num, Color c)
+    {
+        Show(pos, num);
+        mytext.color = c;
+    }
+
     IEnumerator PlayAnimCoroutine()
     {
         Vector3 endPos = transform.position + transform.up * Random.Range(0.4f, 0.6f)
