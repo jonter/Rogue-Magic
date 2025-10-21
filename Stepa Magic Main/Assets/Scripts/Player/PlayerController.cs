@@ -15,6 +15,11 @@ public class PlayerController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
     }
 
+    private void OnDisable()
+    {
+        rb.velocity = Vector3.zero;
+    }
+
     // Update is called once per frame
     void Update()
     {
