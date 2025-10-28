@@ -19,13 +19,13 @@ public class EnemyHealth : MonoBehaviour, IDamagable
         anim = GetComponent<Animator>();
     }
 
-    public void GetDamage(float damage)
+    public void GetDamage(float damage, DamageType dtype = DamageType.Pure)
     {
         if (alive == false) return;
         hp -= damage;
         anim.SetTrigger("hit");
         if(OnDamage != null) OnDamage(hp/maxHp);
-        DamageTextDisplay.Show(transform.position, damage);
+        DamageTextDisplay.Show(transform.position, damage, dtype);
 
         if (hp < 0.001f)
         {

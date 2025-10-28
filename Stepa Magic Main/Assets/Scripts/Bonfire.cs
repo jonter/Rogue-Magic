@@ -7,6 +7,8 @@ public class Bonfire : MonoBehaviour
     [SerializeField] float dps = 20;
     [SerializeField] float damageRadius = 0.7f;
 
+    [SerializeField] DamageType dType;
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -28,7 +30,7 @@ public class Bonfire : MonoBehaviour
         foreach(Collider c in colliders)
         {
             IDamagable obj = c.GetComponent<IDamagable>();
-            if (obj != null) obj.GetDamage(damage);
+            if (obj != null) obj.GetDamage(damage, dType);
         }
         StartCoroutine(BurnCoroutine());
     }

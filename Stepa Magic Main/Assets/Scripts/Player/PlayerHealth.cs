@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour, IDamagable
 {
@@ -20,11 +19,11 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         
     }
 
-    public void GetDamage(float damage)
+    public void GetDamage(float damage, DamageType dtype = DamageType.Pure)
     {
         if (alive == false) return;
         hp -= damage;
-        DamageTextDisplay.Show(transform.position, damage, Color.red);
+        DamageTextDisplay.Show(transform.position, damage, dtype);
         if (OnDamage != null) OnDamage(hp, maxHp);
         if(hp < 0.001f)
         {
