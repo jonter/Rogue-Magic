@@ -1169,6 +1169,7 @@ GameObject:
   - component: {fileID: 6225489963912598220}
   - component: {fileID: 3483948175861720063}
   - component: {fileID: 4869141500873839529}
+  - component: {fileID: 123926795110399839}
   - component: {fileID: 5427725884045156641}
   - component: {fileID: 9089152248783101030}
   m_Layer: 8
@@ -1268,6 +1269,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 60
+--- !u!114 &123926795110399839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2683952612232292196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be5f146c2726334c9051a56ef09f53a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  immuneTypes: 
+  resistTypes: 
+  vulnarTypes: 
 --- !u!114 &5427725884045156641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4211,6 +4227,7 @@ GameObject:
   - component: {fileID: 6135201130300768787}
   - component: {fileID: 235001247905528683}
   - component: {fileID: 4475625432083740628}
+  - component: {fileID: 8661122991211894492}
   m_Layer: 8
   m_Name: Above Canvas
   m_TagString: Untagged
@@ -4315,6 +4332,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 4869141500873839529}
   animTime: 0.2
+--- !u!114 &8661122991211894492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7245278319325666046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be5f146c2726334c9051a56ef09f53a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  immuneTypes: 
+  resistTypes: 
+  vulnarTypes: 
 --- !u!1 &7282763427863917691
 GameObject:
   m_ObjectHideFlags: 0

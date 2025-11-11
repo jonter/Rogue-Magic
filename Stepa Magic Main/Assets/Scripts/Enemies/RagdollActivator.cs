@@ -8,6 +8,10 @@ public class RagdollActivator : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] Rigidbody[] bones;
     [SerializeField] float killForce = 1500;
+
+    [Tooltip("Если у песонажа есть оружие, можно его сюда" +
+        "добавить, чтобы оно также эпично отлетало")]
+    [SerializeField] Rigidbody weapon;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +25,7 @@ public class RagdollActivator : MonoBehaviour
         {
             bones[i].isKinematic = !bones[i].isKinematic;
         }
+        if(weapon) weapon.isKinematic = !weapon.isKinematic;
     }
 
    
@@ -33,6 +38,9 @@ public class RagdollActivator : MonoBehaviour
         float y = Random.Range(0, killForce * 2);
         Vector3 force = new Vector3(x,y,z);
         bones[1].AddForce(force, ForceMode.Acceleration);
+        if (weapon == null) return;
+        weapon.transform.parent = null;
+        weapon.AddForce(force / 3, ForceMode.Acceleration);
     }
 
 }

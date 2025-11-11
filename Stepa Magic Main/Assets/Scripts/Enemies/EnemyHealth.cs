@@ -3,25 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+[RequireComponent(typeof(DamageVulnarabilities))]
 public class EnemyHealth : MonoBehaviour, IDamagable
 {
     [SerializeField] float hp = 50;
     float maxHp;
     bool alive = true;
     Animator anim;
+    DamageVulnarabilities dv;
 
     public event Action<float> OnDamage;
     public event Action OnDeath;
 
-    void Start()
+    void Awake()
     {
         maxHp = hp;
         anim = GetComponent<Animator>();
+        dv = GetComponent<DamageVulnarabilities>();
     }
 
     public void GetDamage(float damage, DamageType dtype = DamageType.Pure)
     {
         if (alive == false) return;
+        damage = dv.CalculateDamage(damage, dtype);
         hp -= damage;
         anim.SetTrigger("hit");
         if(OnDamage != null) OnDamage(hp/maxHp);

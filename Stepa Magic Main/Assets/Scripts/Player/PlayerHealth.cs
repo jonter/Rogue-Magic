@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
 public class PlayerHealth : MonoBehaviour, IDamagable
 {
     float hp = 100;
@@ -34,7 +35,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
     void Death()
     {
-        // эпичная смерть (анимация или рэгдол)
+        GetComponentInChildren<RagdollActivator>().Activate();
         alive = false;
         GetComponent<PlayerController>().enabled = false;
         GetComponent<PlayerAim>().enabled = false;
