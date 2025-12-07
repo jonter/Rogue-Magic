@@ -2,32 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Rendering;
-/// <summary>
-/// TODO 11.11.2025
-/// –азобратьс€ с анимаци€ми, чтобы остановка/разгон были более плавные
-/// –азобратьс€ с атакой, сделать так, чтобы персонаж мог атаковать
-/// даже на скорости (при помощи Animator layer).
-/// ” —тепы немного колбасит врага, когда он р€дом с игроком))
-/// </summary>
+
 public class MeleeAI : EnemyAI
 {
-    [SerializeField] float rageRadius = 15;
-    [SerializeField] float attackDistance = 1.5f;
-
-    [SerializeField] DamageType damageType = DamageType.Physical;
-    [SerializeField] float damage = 20;
     
     Animator anim;
     NavMeshAgent agent;
-    bool isSeen = false;
-
-    PlayerHealth target;
 
     float maxSpeed;
     float currentSpeed;
 
-    bool isBusy = false;
+   
 
     void Start()
     {
@@ -36,7 +21,9 @@ public class MeleeAI : EnemyAI
         target = FindAnyObjectByType<PlayerHealth>();
         currentSpeed = 0;
         maxSpeed = agent.speed;
+
     }
+
 
     private void OnDrawGizmosSelected()
     {

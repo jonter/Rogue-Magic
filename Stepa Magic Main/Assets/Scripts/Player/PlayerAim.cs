@@ -35,7 +35,7 @@ public class PlayerAim : MonoBehaviour
     {
         Vector3 dir = point - transform.position;
         Quaternion rot = Quaternion.LookRotation(dir);
-
+        rot = Quaternion.Euler(0, rot.eulerAngles.y ,0);
         transform.rotation = Quaternion.Slerp(transform.rotation, 
             rot, Time.deltaTime * rotationSpeed);
     }
