@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class RangeAI : EnemyAI
 {
+    RockProjectile projectile;
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        projectile = GetComponentInChildren<RockProjectile>();
+    }
     protected override void ChaseTarget(float distance)
     {
         if(CanThrow(distance) == false)
@@ -13,6 +19,8 @@ public class RangeAI : EnemyAI
         }
         else
         {
+            agent.destination = transform.position;
+            RotateToPlayer();
             if (isBusy == true) return;
             StartCoroutine(AttackCoroutine());
         }
@@ -34,7 +42,7 @@ public class RangeAI : EnemyAI
     bool CheckRaycast(Vector3 origin)
     {
 
-        Vector3 dir = transform.forward;
+        Vector3 dir = target.transform.position - origin;
         LayerMask layers = LayerMask.GetMask("Default", "Player");
         RaycastHit hitInfo;
         Physics.Raycast(origin, dir, out hitInfo, attackDistance, layers);
@@ -42,6 +50,14 @@ public class RangeAI : EnemyAI
         PlayerHealth player = hitInfo.transform.GetComponent<PlayerHealth>();
         if (player == null) return false;
         return true;
+    }
+
+
+    public void Throw()
+    {
+        // TODO: доделать тут функцию
+        RockProjectile clone = Instantiate(projectile, projectile.transform.parent);
+        clone.Launch(target.transform.position, damage);
     }
 
 }
