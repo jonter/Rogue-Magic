@@ -58,6 +58,14 @@ public class RangeAI : EnemyAI
         // TODO: доделать тут функцию
         RockProjectile clone = Instantiate(projectile, projectile.transform.parent);
         clone.Launch(target.transform.position, damage);
+        StartCoroutine(HideHandProjCoroutine());
+    }
+
+    IEnumerator HideHandProjCoroutine()
+    {
+        projectile.gameObject.SetActive(false);
+        yield return new WaitForSeconds(1);
+        projectile.gameObject.SetActive(true);
     }
 
 }

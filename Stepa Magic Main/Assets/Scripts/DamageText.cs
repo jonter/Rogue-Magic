@@ -27,8 +27,8 @@ public class DamageText : MonoBehaviour
 
     public void Show(Vector3 pos, float num, Color c)
     {
+        textcolor = c;
         Show(pos, num);
-        mytext.color = c;
     }
 
     IEnumerator PlayAnimCoroutine()
