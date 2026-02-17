@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5211355448298992235}
   - component: {fileID: 760891120234993693}
   - component: {fileID: 4661261213122490743}
-  - component: {fileID: 5116147084123451112}
+  - component: {fileID: 299006724527749379}
   m_Layer: 9
-  m_Name: Rock Zig Zag
+  m_Name: Rock and Shone (magic)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5116147084123451112
+--- !u!114 &299006724527749379
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,13 +93,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5211355448299345645}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f0ca3becde931742892a90f5d2550b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 83592aef5a0b92946abb3e21bea8063c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  dType: 5
-  degree: 25
-  period: 0.2
+  dType: 2
+  period: 8
+  amplitude: 700
 --- !u!1 &8012075440230845579
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,15 +223,15 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.9528302, g: 0.7952668, b: 0.04194841, a: 1}
-      key1: {r: 0.7379833, g: 0.990566, b: 0.24919893, a: 1}
+      key0: {r: 0.04313723, g: 0.9529412, b: 0.46701658, a: 0.58431375}
+      key1: {r: 0.7379833, g: 0.990566, b: 0.24919893, a: 0.61960787}
       key2: {r: 1, g: 1, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
+      ctime0: 193
       ctime1: 65535
       ctime2: 65535
       ctime3: 0
@@ -242,7 +242,7 @@ TrailRenderer:
       atime0: 0
       atime1: 48380
       atime2: 65535
-      atime3: 0
+      atime3: 65535
       atime4: 0
       atime5: 0
       atime6: 0
@@ -277,15 +277,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 491666, guid: 15091d7e6dee66e4997a3d048491e089, type: 3}
       propertyPath: m_LocalScale.x
-      value: 12
+      value: 10.93932
       objectReference: {fileID: 0}
     - target: {fileID: 491666, guid: 15091d7e6dee66e4997a3d048491e089, type: 3}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 9.1161
       objectReference: {fileID: 0}
     - target: {fileID: 491666, guid: 15091d7e6dee66e4997a3d048491e089, type: 3}
       propertyPath: m_LocalScale.z
-      value: 12
+      value: 10.93932
       objectReference: {fileID: 0}
     - target: {fileID: 491666, guid: 15091d7e6dee66e4997a3d048491e089, type: 3}
       propertyPath: m_LocalPosition.x
@@ -330,7 +330,11 @@ PrefabInstance:
     - target: {fileID: 2319898, guid: 15091d7e6dee66e4997a3d048491e089, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6e4208e5c57b3a94c84f3113026a01e9, type: 2}
+      objectReference: {fileID: 2100000, guid: afbc530b893cee546b5c4f5b2ae8d120, type: 2}
+    - target: {fileID: 3359766, guid: 15091d7e6dee66e4997a3d048491e089, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 37d1e8e1f86e93c4498eab6ea4380ad8, type: 3}
     m_RemovedComponents:
     - {fileID: 64203719223519112, guid: 15091d7e6dee66e4997a3d048491e089, type: 3}
     m_RemovedGameObjects: []
