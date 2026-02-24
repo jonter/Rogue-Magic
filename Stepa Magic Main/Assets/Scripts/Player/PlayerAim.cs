@@ -6,9 +6,11 @@ public class PlayerAim : MonoBehaviour
 {
     Camera mycam;
     [SerializeField] float rotationSpeed = 10;
+    PlayerAimPoint aimPoint;
     // Start is called before the first frame update
     void Start()
     {
+        aimPoint = GetComponentInChildren<PlayerAimPoint>();
         mycam = Camera.main;
     }
 
@@ -18,6 +20,11 @@ public class PlayerAim : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0))
         {
             Aim();
+            aimPoint.Aim();
+        }
+        else
+        {
+            aimPoint.Return();
         }
     }
 
