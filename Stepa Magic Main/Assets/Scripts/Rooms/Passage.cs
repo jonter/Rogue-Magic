@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class Passage : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Room nextRoom;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

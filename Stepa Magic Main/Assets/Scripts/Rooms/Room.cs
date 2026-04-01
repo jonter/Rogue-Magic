@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Passage pass;
+    protected bool activated = false;
+
+    public virtual void Activate()
     {
-        
+        activated = true;
+        // включить ИИ всем врагами или заспаунить их и т.п.
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void OpenNextPassage()
     {
-        
+        pass.GetComponentInChildren<Door>().Open();
+        if (pass.nextRoom == null) return;
+        pass.nextRoom.Activate();
     }
+    
 }

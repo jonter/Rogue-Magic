@@ -7,8 +7,8 @@ public class RoomSpawner : MonoBehaviour
     [SerializeField] Room startRoom;
 
     [SerializeField] int count = 10;
-    [SerializeField] GameObject[] rooms;
-    [SerializeField] GameObject[] passages;
+
+    [SerializeField] RoomContainer container;
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +21,8 @@ public class RoomSpawner : MonoBehaviour
         GameObject lastRoom = startRoom.gameObject;
         for(int i = 0; i < count; i++)
         {
-            GameObject newPassage = Instantiate(passages[0]);
-            GameObject newRoom = Instantiate(rooms[0]);
+            GameObject newPassage = Instantiate(container.GetRandomPassage());
+            GameObject newRoom = Instantiate(container.GetRandomRoom());
 
             ExitPoint exitRoom = lastRoom.GetComponentInChildren<ExitPoint>();
             newPassage.transform.position = exitRoom.transform.position;
@@ -30,6 +30,7 @@ public class RoomSpawner : MonoBehaviour
             ExitPoint exitPassage = newPassage.GetComponentInChildren<ExitPoint>();
             newRoom.transform.position = exitPassage.transform.position;
 
+            lastRoom.GetComponent<Room>().pass = newPassage.GetComponent<Passage>();
             lastRoom = newRoom;
         }
     }

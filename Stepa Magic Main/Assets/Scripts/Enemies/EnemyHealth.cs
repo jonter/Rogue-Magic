@@ -47,6 +47,7 @@ public class EnemyHealth : MonoBehaviour, IDamagable
         GetComponent<RagdollActivator>().Activate();
         alive = false;
         GetComponent<Collider>().enabled = false;
+        transform.parent = null;
     }
 
   
