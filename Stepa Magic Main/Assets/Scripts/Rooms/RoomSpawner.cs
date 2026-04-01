@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RoomSpawner : MonoBehaviour
 {
@@ -32,7 +34,11 @@ public class RoomSpawner : MonoBehaviour
 
             lastRoom.GetComponent<Room>().pass = newPassage.GetComponent<Passage>();
             lastRoom = newRoom;
+
+            newPassage.GetComponent<Passage>().nextRoom = newRoom.GetComponent<Room>();
         }
+        // заспаунить финальную комнату подземелья
+        FindObjectOfType<NavMeshSurface>().BuildNavMesh();
     }
 
     

@@ -16,6 +16,7 @@ public class Room : MonoBehaviour
     public virtual void OpenNextPassage()
     {
         pass.GetComponentInChildren<Door>().Open();
+        print(pass.nextRoom.name);
         if (pass.nextRoom == null) return;
         pass.nextRoom.Activate();
     }

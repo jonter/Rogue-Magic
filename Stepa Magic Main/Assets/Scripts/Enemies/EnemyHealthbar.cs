@@ -18,6 +18,7 @@ public class EnemyHealthbar : MonoBehaviour
         offset = transform.position - enemy.transform.position;
         hpBar.gameObject.SetActive(false);
         transform.parent = null;
+        transform.rotation = Camera.main.transform.rotation;
     }
 
     private void OnEnable()
