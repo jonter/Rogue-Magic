@@ -37,9 +37,9 @@ public class RoomSpawner : MonoBehaviour
 
             newPassage.GetComponent<Passage>().nextRoom = newRoom.GetComponent<Room>();
         }
-        // заспаунить финальную комнату подземелья
         FindObjectOfType<NavMeshSurface>().BuildNavMesh();
     }
+
 
     
 }
