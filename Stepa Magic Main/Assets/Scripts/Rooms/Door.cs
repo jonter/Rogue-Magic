@@ -26,6 +26,7 @@ public class Door : MonoBehaviour, IDamagable
 
     public void Open()
     {
+        
         if (isOpen == true) return;
         transform.DOKill();
         isOpen = true;

@@ -16,6 +16,8 @@ public class EnemyHealth : MonoBehaviour, IDamagable
     public event Action<float> OnDamage;
     public event Action OnDeath;
 
+    [SerializeField] int killCoins = 3;
+
     void Awake()
     {
         maxHp = hp;
@@ -48,6 +50,12 @@ public class EnemyHealth : MonoBehaviour, IDamagable
         alive = false;
         GetComponent<Collider>().enabled = false;
         transform.parent = null;
+        RewardForKill();
+    }
+
+    void RewardForKill()
+    {
+        CoinsManager.Instance.AddCoins(killCoins);   
     }
 
   
