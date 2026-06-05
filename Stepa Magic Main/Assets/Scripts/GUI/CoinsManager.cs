@@ -18,6 +18,7 @@ public class CoinsManager : MonoBehaviour
     [SerializeField] float animTime = 0.2f;
     [SerializeField] float yOffset = 30;
 
+    bool isAnimating = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,9 +52,17 @@ public class CoinsManager : MonoBehaviour
 
     void MakeAnim()
     {
+        if (isAnimating == true) return;
+        isAnimating = true;
         float yPos = myrect.anchoredPosition.y + yOffset;
-        myrect.DOAnchorPosY(yPos, animTime).SetLoops(2, LoopType.Yoyo);
+        myrect.DOAnchorPosY(yPos, animTime).SetLoops(2, LoopType.Yoyo).OnComplete(EnableAnim);
+    }
 
+    void EnableAnim() { isAnimating = false; }
+
+    private void OnDisable()
+    {
+        myrect.DOKill();
     }
 
 }

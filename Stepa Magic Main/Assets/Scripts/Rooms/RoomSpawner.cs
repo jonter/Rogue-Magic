@@ -37,7 +37,24 @@ public class RoomSpawner : MonoBehaviour
 
             newPassage.GetComponent<Passage>().nextRoom = newRoom.GetComponent<Room>();
         }
+        CreateFinalRoom(lastRoom.GetComponent<Room>());
         FindObjectOfType<NavMeshSurface>().BuildNavMesh();
+    }
+
+    void CreateFinalRoom(Room lastRoom)
+    {
+        GameObject newPassage = Instantiate(container.GetRandomPassage());
+        ExitPoint exitPoint = lastRoom.GetComponentInChildren<ExitPoint>();
+        newPassage.transform.position = exitPoint.transform.position;
+        Passage pass = newPassage.GetComponent<Passage>();
+        lastRoom.pass = pass;
+
+        GameObject room = container.GetFinalRoom();
+        GameObject final = Instantiate(room);
+
+        Vector3 spawnPos = pass.GetComponentInChildren<ExitPoint>().transform.position;
+        final.transform.position = spawnPos;
+        pass.nextRoom = final.GetComponent<Room>();
     }
 
 

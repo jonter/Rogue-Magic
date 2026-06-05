@@ -20,3 +20,5 @@ MonoBehaviour:
   - {fileID: 7239973497722297161, guid: 3bc1de641f6c3944cbfba29894da0df3, type: 3}
   - {fileID: 5677959595342449240, guid: bba1a91cfc61c384ca21b12c57ca6470, type: 3}
   - {fileID: 845229038345390622, guid: f14dcc4f69aa3164d829252d4ba1df41, type: 3}
+  finalRooms:
+  - {fileID: 2503807096392835198, guid: 6d674c6af5c7c2d47af2bc9305ef7471, type: 3}

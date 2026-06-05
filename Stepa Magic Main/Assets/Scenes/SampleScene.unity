@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startRoom: {fileID: 1295958907}
-  count: 10
+  count: 1
   container: {fileID: 11400000, guid: 70165b13d6a65a94fbc0ad0d13353c21, type: 2}
 --- !u!4 &33269774
 Transform:

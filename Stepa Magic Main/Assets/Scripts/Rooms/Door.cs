@@ -17,7 +17,7 @@ public class Door : MonoBehaviour, IDamagable
 
         isTwitching = true;
         Vector3 rot = new Vector3(0, rotationY/10, 0);
-        transform.DOLocalRotate(rot, twitchTime).SetLoops(2, LoopType.Yoyo)
+        transform.DOLocalRotate(rot, twitchTime, RotateMode.WorldAxisAdd).SetLoops(2, LoopType.Yoyo)
             .SetEase(Ease.OutSine).OnComplete(EnableTwitch);
 
     }
@@ -31,7 +31,7 @@ public class Door : MonoBehaviour, IDamagable
         transform.DOKill();
         isOpen = true;
         Vector3 rot = new Vector3(0, rotationY, 0);
-        transform.DOLocalRotate(rot, openAnimTime).SetEase(Ease.OutBack);
+        transform.DOLocalRotate(rot, openAnimTime, RotateMode.WorldAxisAdd).SetEase(Ease.OutBack);
     }
 
 
