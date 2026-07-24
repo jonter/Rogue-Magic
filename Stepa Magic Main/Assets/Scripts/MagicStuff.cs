@@ -1,30 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MagicStuff : MonoBehaviour
 {
     [SerializeField] GameObject projectilePrefab;
 
-    public float reloadTime = 1;
     [HideInInspector] public bool isReloaded = true;
-    [SerializeField] float damage = 15;
-    [SerializeField] float projectileSpeed = 10;
+    [SerializeField] float baseDamage = 15;
+    [SerializeField] float baseProjectileSpeed = 10;
+    [SerializeField] float baseFireRate = 1;
+
+    float damageMult = 1;
+    float speedMult = 1;
+    float fireRateMult = 1;
+
+    public float GetDamage() { return baseDamage * damageMult; }
+    public float GetFireRate() { return baseFireRate * fireRateMult; }
+    public float GetProjSpeed() { return baseProjectileSpeed * speedMult; }
+
+    public event Action<float, float> OnShoot;
 
     public void Attack(Vector3 dir)
     {
-        StartCoroutine(AttackCoroutine(dir));
+        //StartCoroutine(AttackCoroutine(dir));
     }
 
-    IEnumerator AttackCoroutine(Vector3 dir)
-    {
-        Vector3 spawnPos = transform.GetChild(0).position;
-        GameObject clone = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
-        MagicProjectile mp = clone.GetComponent<MagicProjectile>();
-        mp.Launch(dir * projectileSpeed, damage);
-        isReloaded = false;
-        yield return new WaitForSeconds(reloadTime);
-        isReloaded = true;
-    }
+    //IEnumerator AttackCoroutine(Vector3 dir)
+    //{
+    // TODO: Смотрим Gemini и переписываем логику атаки наших посохов, чтобы все было согласно
+    // принципам SOLID
+        
+    //}
 
 }
