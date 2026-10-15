@@ -22,9 +22,24 @@ public class MagicStuff : MonoBehaviour
 
     public event Action<float, float> OnShoot;
 
+    List<IShootModifier> shootModifiers = new List<IShootModifier>();
+    List<IProjectileModifier> projModifiers = new List<IProjectileModifier>();
+
+    public void AddShootModif(IShootModifier mod) { shootModifiers.Add(mod); }
+    public void AddProjModif(IProjectileModifier mod) { projModifiers.Add(mod); }
+
+
     public void Attack(Vector3 dir)
     {
-        //StartCoroutine(AttackCoroutine(dir));
+        if(shootModifiers.Count > 0)
+        {
+            foreach (var mod in shootModifiers) mod.OnShoot(this, dir);
+        }
+        else
+        {
+            // SpawnOneProjectile()
+        }
+        
     }
 
     //IEnumerator AttackCoroutine(Vector3 dir)
