@@ -20,26 +20,36 @@ public class MagicStuff : MonoBehaviour
     public float GetFireRate() { return baseFireRate * fireRateMult; }
     public float GetProjSpeed() { return baseProjectileSpeed * speedMult; }
 
-    public event Action<float, float> OnShoot;
 
     List<IShootModifier> shootModifiers = new List<IShootModifier>();
     List<IProjectileModifier> projModifiers = new List<IProjectileModifier>();
 
     public void AddShootModif(IShootModifier mod) { shootModifiers.Add(mod); }
-    public void AddProjModif(IProjectileModifier mod) { projModifiers.Add(mod); }
-
+    public void AddProjModif(IProjectileModifier mod) { projModifiers.Add(mod); }   
 
     public void Attack(Vector3 dir)
     {
-        if(shootModifiers.Count > 0)
+        Vector3 pos = transform.GetChild(0).position;
+        if (shootModifiers.Count > 0)
         {
-            foreach (var mod in shootModifiers) mod.OnShoot(this, dir);
+            foreach (var mod in shootModifiers) mod.OnShoot(this, pos, dir);
         }
         else
         {
-            // SpawnOneProjectile()
+            SpawnOneOrojectile(dir);
+
         }
-        
+
+    }
+
+    void SpawnOneOrojectile(Vector3 dir)
+    {
+        Vector3 pos = transform.GetChild(0).position;
+        GameObject proj = Instantiate(projectilePrefab, pos, Quaternion.identity);
+        MagicProjectile mp = proj.GetComponent<MagicProjectile>();
+        foreach (var mod in projModifiers) mod.OnProjectiteSpawn(mp);
+
+        mp.Launch(this, dir * GetProjSpeed(), GetDamage(), DamageType.Physical);
     }
 
     //IEnumerator AttackCoroutine(Vector3 dir)

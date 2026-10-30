@@ -1,4 +1,5 @@
 
+
 using UnityEngine;
 
 public interface IDamagable
@@ -18,11 +19,11 @@ public enum DamageType
 
 public interface IShootModifier
 {
-    void OnShoot(MagicStuff weapon, Vector3 dir);
+    void OnShoot(MagicStuff weapon,Vector3 pos ,Vector3 dir);
 }
 
 public interface IProjectileModifier
 {
-    void OnProjectileSpawn(MagicProjectile proj); 
+    void OnProjectiteSpawn(MagicProjectile proj);
 }
 
