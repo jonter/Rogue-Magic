@@ -36,13 +36,13 @@ public class MagicStuff : MonoBehaviour
         }
         else
         {
-            SpawnOneOrojectile(dir);
+            SpawnOneProjectile(dir);
 
         }
 
     }
 
-    void SpawnOneOrojectile(Vector3 dir)
+    public void SpawnOneProjectile(Vector3 dir)
     {
         Vector3 pos = transform.GetChild(0).position;
         GameObject proj = Instantiate(projectilePrefab, pos, Quaternion.identity);

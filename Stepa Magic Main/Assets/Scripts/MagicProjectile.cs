@@ -10,9 +10,8 @@ public class MagicProjectile : MonoBehaviour
     [SerializeField] DamageType damageType = DamageType.Pure;
 
 
-
-    int bounceCount = 4;
-    bool canPierce = true;
+    public int bounceCount = 0;
+    public bool canPierce = false;
     MagicStuff owner;
     Rigidbody rb;
     
