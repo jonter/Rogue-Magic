@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] float delay = 0.3f;
+    float delay = 0.3f;
+    float animSpeed = 1;
     bool isReady = true;
     Animator anim;
     [SerializeField] MagicStuff stuff;
@@ -29,9 +30,13 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator ShootCoroutine()
     {
+        animSpeed = stuff.GetFireRate();
+        anim.SetFloat("attackSpeed", animSpeed);
+        float timeToShoot = delay / animSpeed;
+
         isReady = false;
         anim.SetTrigger("attack1");
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(timeToShoot);
         stuff.Attack(transform.forward);
         isReady = true;
     }

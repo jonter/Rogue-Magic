@@ -16,6 +16,11 @@ public class MagicStuff : MonoBehaviour
     float speedMult = 1;
     float fireRateMult = 1;
 
+    public void IncreaseDamage(float mult) { damageMult *= mult; }
+    public void IncreaseSpeed(float mult) { speedMult *= mult; }
+    public void IncreaseFireRate(float mult) { fireRateMult *= mult; }
+    
+
     public float GetDamage() { return baseDamage * damageMult; }
     public float GetFireRate() { return baseFireRate * fireRateMult; }
     public float GetProjSpeed() { return baseProjectileSpeed * speedMult; }
@@ -34,12 +39,17 @@ public class MagicStuff : MonoBehaviour
         {
             foreach (var mod in shootModifiers) mod.OnShoot(this, pos, dir);
         }
-        else
-        {
-            SpawnOneProjectile(dir);
+        
+        SpawnOneProjectile(dir);
+        StartCoroutine(ReloadCoroutine());
+    }
 
-        }
-
+    IEnumerator ReloadCoroutine()
+    {
+        isReloaded = false;
+        float delay = 1f / GetFireRate();
+        yield return new WaitForSeconds(delay);
+        isReloaded = true;
     }
 
     public void SpawnOneProjectile(Vector3 dir)

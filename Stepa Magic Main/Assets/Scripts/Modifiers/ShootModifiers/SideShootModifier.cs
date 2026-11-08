@@ -14,7 +14,7 @@ public class SideShootModifier : MonoBehaviour, IShootModifier
 
     public void OnShoot(MagicStuff weapon, Vector3 pos, Vector3 dir)
     {
-        weapon.SpawnOneProjectile(dir);
+        
 
         for (int i = 0; i < sideShootCount; i++)
         {

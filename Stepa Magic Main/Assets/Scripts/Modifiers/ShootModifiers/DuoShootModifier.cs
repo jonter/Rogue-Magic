@@ -16,7 +16,6 @@ public class DuoShootModifier : MonoBehaviour, IShootModifier
 
     public void OnShoot(MagicStuff weapon, Vector3 pos, Vector3 dir)
     {
-        weapon.SpawnOneProjectile(dir);
         StartCoroutine(ShootExtraCoroutine(weapon, dir));
     }
 
