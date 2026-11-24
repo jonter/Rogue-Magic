@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoreDamageModifier : MonoBehaviour
 {
     public float mult = 1.4f;
-    private void Awake()
+    private void Start()
     {
         MagicStuff stuff = GetComponent<MagicStuff>();
         stuff.IncreaseDamage(mult);
